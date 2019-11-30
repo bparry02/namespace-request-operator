@@ -1,2 +1,5 @@
 ---
 # tasks file for namespacerequest
+- name: Create Namespace
+  k8s:
+    definition: "{{ lookup('template', 'namespace.yml.j2') | from_yaml }}"
