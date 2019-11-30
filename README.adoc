@@ -5,7 +5,7 @@
 Before running the operator, OpenShift needs to know about the new custom resource definition the operator will be watching.
 
 . Deploy the CRD:
-
++
 ----
 oc create -f deploy/crds/namespace.bparry.net_namespacerequests_crd.yaml
 ----
