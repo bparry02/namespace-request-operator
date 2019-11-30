@@ -1,0 +1,77 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata: {}
+objects:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStreamTag
+  generation: 0
+  image:
+    dockerImageMetadata:
+      ContainerConfig: {}
+      Created: null
+      Id: ""
+      apiVersion: "1.0"
+      kind: DockerImage
+    dockerImageMetadataVersion: "1.0"
+  lookupPolicy:
+    local: false
+  metadata:
+    annotations:
+      openshift.io/imported-from: namespace-request-operator:latest
+    labels:
+      build: namespace-request-operator
+    name: namespace-request-operator:latest
+  tag:
+    annotations: null
+    from:
+      kind: DockerImage
+      name: namespace-request-operator:latest
+    generation: null
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: ""
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    labels:
+      build: namespace-request-operator
+    name: namespace-request-operator
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: namespace-request-operator:latest
+    source:
+      git:
+        uri: https://github.com/bparry02/namespace-request-operator.git
+      type: Git
+    strategy:
+      dockerStrategy:
+        dockerfilePath: build/Dockerfile
+        from:
+          kind: ImageStreamTag
+          name: ansible-operator:v0.12.0
+      type: Docker
+    triggers:
+    - github:
+        secret: ${GITHUB_WEBHOOK_SECRET}
+      type: GitHub
+    - generic:
+        secret: ${GENERIC_WEBHOOK_SECRET}
+      type: Generic
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+parameters:
+- description: Github trigger secret.  A difficult to guess string encoded as part
+    of the webhook URL.  Not encrypted.
+  displayName: GitHub Webhook Secret
+  from: '[a-zA-Z0-9]{40}'
+  generate: expression
+  name: GITHUB_WEBHOOK_SECRET
+- description: A secret string used to configure the Generic webhook.
+  displayName: Generic Webhook Secret
+  from: '[a-zA-Z0-9]{40}'
+  generate: expression
+  name: GENERIC_WEBHOOK_SECRET
