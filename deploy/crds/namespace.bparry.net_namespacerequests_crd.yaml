@@ -9,7 +9,7 @@ spec:
     listKind: NamespaceRequestList
     plural: namespacerequests
     singular: namespacerequest
-  scope: Namespaced
+  scope: Cluster
   subresources:
     status: {}
   versions:
