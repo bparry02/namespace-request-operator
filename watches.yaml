@@ -1,0 +1,5 @@
+---
+- version: v1alpha1
+  group: namespace.bparry.net
+  kind: NamespaceRequest
+  role: /opt/ansible/roles/namespacerequest

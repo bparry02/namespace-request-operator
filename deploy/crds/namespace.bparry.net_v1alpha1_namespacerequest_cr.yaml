@@ -1,0 +1,7 @@
+apiVersion: namespace.bparry.net/v1alpha1
+kind: NamespaceRequest
+metadata:
+  name: example-namespacerequest
+spec:
+  # Add fields here
+  size: 3
