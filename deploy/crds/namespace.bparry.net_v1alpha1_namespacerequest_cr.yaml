@@ -1,7 +1,6 @@
 apiVersion: namespace.bparry.net/v1alpha1
 kind: NamespaceRequest
 metadata:
-  name: example-namespacerequest
+  name: my-example
 spec:
-  # Add fields here
-  size: 3
+  tenantId: "sample-tenant"

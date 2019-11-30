@@ -1,2 +1,3 @@
 ---
 # vars file for namespacerequest
+node_selector: "tenant={{ tenant_id }}"

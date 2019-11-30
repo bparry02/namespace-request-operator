@@ -1,5 +1,3 @@
 ---
 # defaults file for namespacerequest
-default_tenant_id: "NOT-SET"
-
-node_selector: "tenant={{ default_tenant_id }}"
+tenant_id: "NOT-SET"
