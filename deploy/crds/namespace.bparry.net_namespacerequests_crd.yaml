@@ -9,6 +9,8 @@ spec:
     listKind: NamespaceRequestList
     plural: namespacerequests
     singular: namespacerequest
+    shortNames:
+      - nsr
   scope: Cluster
   subresources:
     status: {}
