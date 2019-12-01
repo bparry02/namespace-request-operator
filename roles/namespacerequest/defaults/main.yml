@@ -1,3 +1,5 @@
 ---
 # defaults file for namespacerequest
+state: present
+
 tenant_id: "NOT-SET"
