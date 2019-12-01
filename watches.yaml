@@ -3,3 +3,7 @@
   group: namespace.bparry.net
   kind: NamespaceRequest
   role: /opt/ansible/roles/namespacerequest
+  finalizer:
+    name: finalizer.namespace.bparry.net
+    vars:
+      state: absent
